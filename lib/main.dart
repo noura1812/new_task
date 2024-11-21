@@ -13,15 +13,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       title: 'Flutter Demo',
-      supportedLocales: [
-        const Locale('en'),
-        const Locale('ar'),
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
       ],
       locale: const Locale('ar'),
       theme: ThemeData(
