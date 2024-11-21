@@ -17,7 +17,6 @@ class ProductDetailsScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: AnimationLimiter(
           child: Column(

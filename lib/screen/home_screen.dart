@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:new_task/common/app_colors.dart';
+import 'package:new_task/common/app_theme.dart';
 import 'package:new_task/model/car_model.dart';
 import 'package:new_task/widget/car_card.dart';
 import 'package:new_task/widget/story_widget.dart';
@@ -7,13 +9,12 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       appBar: AppBar(
         foregroundColor: Colors.white,
         flexibleSpace: Container(
@@ -30,6 +31,23 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         actions: [
+          Switch(
+            value: Theme.of(context).brightness == Brightness.dark,
+            onChanged: (value) {
+              Get.changeTheme(value ? AppTheme.darkTheme : AppTheme.lightTheme);
+            },
+            thumbIcon: WidgetStateProperty.resolveWith<Icon?>(
+              (Set<WidgetState> states) {
+                if (states.contains(WidgetState.selected)) {
+                  return const Icon(Icons.brightness_2);
+                }
+                return null; // other states will use default thumbIcon.
+              },
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
           Directionality(
             textDirection: TextDirection.ltr,
             child: Badge.count(
